@@ -1,8 +1,5 @@
 // case1
 const array = []
-const evenArray = []
-const oddArray = []
-
 
 for (let i = 1 ; i <= 100; i++) {
 
@@ -10,6 +7,9 @@ for (let i = 1 ; i <= 100; i++) {
   const randomNumber = Math.floor(Math.random() * 100)
   array.push(randomNumber)
 }
+
+const evenArray = []
+const oddArray = []
 
 for (let i = 0; i < array.length; i++) {
   
