@@ -4,7 +4,7 @@ const array = []
 for (let i = 1 ; i <= 100; i++) {
 
   // Array 100 nilai random 
-  const randomNumber = Math.floor(Math.random() * 100)
+  const randomNumber = Math.floor(Math.random() * 50)
   array.push(randomNumber)
 }
 
@@ -27,10 +27,39 @@ for (let i = 0; i < array.length; i++) {
 
 }
 
-const minimal = (number) => Math.min(...number)
-const maksimal = (number) => Math.max(...number)
-const totalNilai = (array) => array.reduce((total, value) => total + value, 0);
-const rataRata = (array) => totalNilai(array) / array.length;
+// mencari minimal
+const minimal = (number) => {
+  let min = number[0]
+  for (let i = 1; i < number.length; i++) {
+    if (number[i] < min) {
+      min = number[i]
+    }
+  }
+  return min
+}
+
+// mencari maksimal
+const maksimal = (number) => {
+  let max = number[0]
+  for (let i = 1; i < number.length; i++) {
+    if (number[i] > max) {
+      max = number[i]
+    }
+  }
+  return max
+}
+
+// mencari total
+const totalNilai = (number) => {
+  let total = 0
+  for (let i = 0; i < number.length; i++) {
+    total += number[i]
+  }
+  return total
+}
+
+// mencari rata-rata
+const rataRata = (number) => totalNilai(number) / number.length;
 
 // Hasil array genap
 const evenMin = minimal(evenArray)
