@@ -11,10 +11,10 @@ const {
 } = require('../middleware/authMiddleware')
 const movieRouter = express.Router()
 
-movieRouter.get('/movies', authMiddleware, getMovies)
-movieRouter.get('/movies/:id', authMiddleware, getMovieById)
-movieRouter.post('/movies', authMiddleware, addMovie)
-movieRouter.put('/movies/:id', authMiddleware, updateMovieById)
-movieRouter.delete('/movies/:id', authMiddleware, deleteMovie)
+movieRouter.get('/movies', getMovies, authMiddleware)
+movieRouter.get('/movies/:id', getMovieById, authMiddleware)
+movieRouter.post('/movies',addMovie, authMiddleware)
+movieRouter.put('/movies/:id',updateMovieById, authMiddleware)
+movieRouter.delete('/movies/:id',deleteMovie, authMiddleware)
 
 module.exports = movieRouter

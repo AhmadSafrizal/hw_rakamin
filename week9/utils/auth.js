@@ -1,20 +1,23 @@
-const jwt = require('jsonwebtoken');
+const jwt = require('jsonwebtoken')
 
-const signToken = data => {
-  const token = jwt.sign( 
-    data, 
-    'secretData', 
-    { expiresIn: '1h' }
-  );
-  return token;
-};
+exports.authentication = (req, res, next) => {
+  const token = req.headers.authorization
 
-const verifyToken = token => {
-  const data = jwt.verify(token, 'secretData');
-  return data;
-};
+  if (!token) {
+    return res.status(401).json({
+      message: "invalid credential"
+    })
+  }
 
-module.exports = { 
-  signToken, 
-  verifyToken 
-};
+  const decodeToken = jwt.verify(token, 'secretKey')
+
+  req.user.id = decodeToken.id
+
+  if (decodeToken.role !== 'admin') {
+    return res.status(403).json({
+      message: "Unauthorized user"
+    })
+  }
+
+  next()
+}

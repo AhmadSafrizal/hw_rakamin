@@ -1,5 +1,5 @@
 const pool = require('../db')
-const { signToken } = require('../utils/auth')
+const { signToken } = require('../helper/signToken')
 const bcrypt = require('bcrypt')
 
 const register = async (req, res) => {
