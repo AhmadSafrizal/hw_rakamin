@@ -2,13 +2,14 @@ const pool = require('../db')
 
 const getMovies = async (req, res) => {
   try {
-    const num = req.query.page - 1
-    const limit = 10
-    const offset = num * limit
+    let page = req.query.page || 1
+    let limit = req.query.limit || 10
+
+    const offset = (page -1) * limit
 
     // query sql
     const query = {
-      text: `SELECT * FROM movies ORDER BY id ASC OFFSET ${offset} LIMIT ${limit}`,
+      text: `SELECT * FROM movies ORDER BY id ASC OFFSET ${offset} LIMIT ${limit}`
     }
 
     // eksekusi query
