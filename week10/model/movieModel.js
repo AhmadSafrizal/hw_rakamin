@@ -30,12 +30,6 @@ class movieModel {
   static addMovie = async (userData, next) => {
     const { id, title, genres, year, photo } = userData
 
-    if(!id || !title || !genres || !year || !photo) {
-      return next({
-        name: "requestBodyError"
-      })
-    }
-
     const findQuery = 'INSERT INTO movies (id, title, genres, year, photo) VALUES($1, $2, $3, $4, $5)'
 
     try {

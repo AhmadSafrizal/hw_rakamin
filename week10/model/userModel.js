@@ -30,12 +30,6 @@ class userModel {
   static addUser = async (userData, next) => {
     const { id, email, gender, password, role } = userData
 
-    if(!id || !email || !gender || !password || !role) {
-      return next({
-        name: "requestBodyError"
-      })
-    }
-
     const findQuery = 'INSERT INTO users (id, email, gender, password, role) VALUES($1, $2, $3, $4, $5)'
 
     try {

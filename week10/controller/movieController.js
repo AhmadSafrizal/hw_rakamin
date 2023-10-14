@@ -37,8 +37,10 @@ class movieController {
       const result = await movieModel.addMovie(movieData, next)
 
       res.status(201).json(
-        result,
-       { message: "Data added..."}
+        { 
+          result,
+          message: "Data added..."
+        }
       )
     } catch (error) {
       next(error)
